@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">天朝计数</string>
+    <string name="action_settings">设置</string>
+    <string name="edit_message">请输入留言信息...</string>
+    <string name="button_send">提交</string>
+    <string name="title_activity_display_message">留言信息</string>
+    <string name="action_search">搜索</string>
+</resources>
