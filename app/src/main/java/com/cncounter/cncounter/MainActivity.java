@@ -47,8 +47,7 @@ public class MainActivity extends BaseActivity {
             Log.d(this.getClass().getPackage().getName(),"onStop(): input_text="+input_text);
         }
         //
-        Context context = this;//getActivity();
-        SharedPreferences sharedPref = context.getSharedPreferences(
+        SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         //
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -60,10 +59,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStart() {
         //
-        Context activity = this;//getActivity();
-        //
-        //SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences sharedPref = activity.getSharedPreferences(
+        SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key),Context.MODE_PRIVATE);
         String input_text = sharedPref.getString(getString(R.string.saved_text_input_key), "");
 

@@ -11,7 +11,7 @@ public abstract class AppLevelHolder {
     /**
      * 当前活动的Activity
      */
-    public static Activity currentActiveActivity = null;
+    private static Activity currentActiveActivity = null;
 
     public static Activity getCurrentActiveActivity() {
         return currentActiveActivity;
@@ -19,5 +19,12 @@ public abstract class AppLevelHolder {
 
     public static void setCurrentActiveActivity(Activity currentActiveActivity) {
         AppLevelHolder.currentActiveActivity = currentActiveActivity;
+    }
+
+    /**
+     * 清空持有的对象
+     */
+    public static synchronized void clear(){
+        currentActiveActivity = null;
     }
 }

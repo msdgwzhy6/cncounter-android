@@ -1,9 +1,12 @@
 package com.cncounter.base;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.cncounter.cncounter.R;
 import com.cncounter.helper.AppLevelHolder;
 
 /**
@@ -12,6 +15,12 @@ import com.cncounter.helper.AppLevelHolder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    /**
+     * 默认构造函数
+     */
+    public BaseActivity(){
+        super();
+    }
     //
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -48,5 +57,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    public  SharedPreferences getSharedPreferences(String name){
+        int mode= Context.MODE_PRIVATE;
+        Context context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences( name, mode);
+        //
+        return sharedPref;
     }
 }
