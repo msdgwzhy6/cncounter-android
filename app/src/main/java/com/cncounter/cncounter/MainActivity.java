@@ -1,11 +1,15 @@
 package com.cncounter.cncounter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.Menu;
@@ -33,6 +37,53 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        //
+        String input_text = "";
+        EditText edit_message = (EditText) findViewById(R.id.edit_message);
+        if(null != edit_message){
+            input_text = edit_message.getText().toString();
+            Log.d(this.getClass().getPackage().getName(),"onStop(): input_text="+input_text);
+        }
+        //
+        Context context = this;//getActivity();
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        //
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.saved_text_input_key), input_text);
+        editor.commit();
+        super.onStop();
+    }
+
+    @Override
+    protected void onStart() {
+        //
+        Context activity = this;//getActivity();
+        //
+        //SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = activity.getSharedPreferences(
+                getString(R.string.preference_file_key),Context.MODE_PRIVATE);
+        String input_text = sharedPref.getString(getString(R.string.saved_text_input_key), "");
+
+        Log.d(this.getClass().getPackage().getName(),"onStart(): input_text="+input_text);
+        if(null != input_text && false == input_text.trim().isEmpty()){
+            EditText edit_message = (EditText) findViewById(R.id.edit_message);
+            if(null != edit_message){
+                edit_message.setText(input_text);
+            }
+        }
+        //
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        //
+        super.onPause();
     }
 
     @Override

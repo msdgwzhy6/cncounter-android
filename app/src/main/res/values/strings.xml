@@ -5,4 +5,6 @@
     <string name="button_send">提交</string>
     <string name="title_activity_display_message">留言信息</string>
     <string name="action_search">搜索</string>
+    <string name="preference_file_key">PREFERENCE_FILE_KEY_1</string>
+    <string name="saved_text_input_key">saved_text_input_key_1</string>
 </resources>
