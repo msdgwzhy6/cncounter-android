@@ -15,6 +15,7 @@ import com.cncounter.helper.AppLevelHolder;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected static final String TAG = "CNC";
     /**
      * 默认构造函数
      */

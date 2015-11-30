@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity {
         EditText edit_message = (EditText) findViewById(R.id.edit_message);
         if(null != edit_message){
             input_text = edit_message.getText().toString();
-            Log.d(this.getClass().getPackage().getName(),"onStop(): input_text="+input_text);
+            Log.d(TAG,"onStop(): input_text="+input_text);
         }
         //
         SharedPreferences sharedPref = getSharedPreferences(
@@ -63,7 +63,7 @@ public class MainActivity extends BaseActivity {
                 getString(R.string.preference_file_key),Context.MODE_PRIVATE);
         String input_text = sharedPref.getString(getString(R.string.saved_text_input_key), "");
 
-        Log.d(this.getClass().getPackage().getName(),"onStart(): input_text="+input_text);
+        Log.d(TAG,"onStart(): input_text="+input_text);
         if(null != input_text && false == input_text.trim().isEmpty()){
             EditText edit_message = (EditText) findViewById(R.id.edit_message);
             if(null != edit_message){
